@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["node_modules/@types", "@types","./types"],
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "&/*": ["src/*"]
+    },
+    "jsx": "react",
+    "strictNullChecks": true,
+    "noImplicitAny": true
+  }
+}
