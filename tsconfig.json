@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "typeRoots": ["node_modules/@types", "@types","./types"],
+    "types": ["react/next", "react-dom/next"],
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
