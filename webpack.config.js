@@ -1,5 +1,5 @@
 const path = require("path");
-const html = require("html-webpack-plugin");
+const htmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: './src/index.tsx',
   mode: 'development',
@@ -20,8 +20,12 @@ module.exports = {
         type: "asset/resource",
       },
       {
-        test: /\.(scss|css|sass)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.(scss|sass)$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.(t|j)sx?$/,
@@ -41,24 +45,24 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-   // hot:true
+    // hot:true
     historyApiFallback: true,
     proxy: {
       //context: '/hello',
-     /*  target: 'localhost:3000',  // 代理跨域目标接口 将后端代理到前端
-      changeOrigin: true,
-      secure: false,  // 当代理某些https服务报错时用
-      cookieDomainRewrite: false ,// 可以为false，表示不修改 */
-     /*  '/api': {
-        changeOrigin: true,
-        secure: false,  // 当代理某些https服务报错时用
-        cookieDomainRewrite: false ,// 可以为false，表示不修改
-        target: 'http://localhost:3000/api',
-        pathRewrite: { '^/api': '' },
-      }, */
+      /*  target: 'localhost:3000',  // 代理跨域目标接口 将后端代理到前端
+       changeOrigin: true,
+       secure: false,  // 当代理某些https服务报错时用
+       cookieDomainRewrite: false ,// 可以为false，表示不修改 */
+      /*  '/api': {
+         changeOrigin: true,
+         secure: false,  // 当代理某些https服务报错时用
+         cookieDomainRewrite: false ,// 可以为false，表示不修改
+         target: 'http://localhost:3000/api',
+         pathRewrite: { '^/api': '' },
+       }, */
     }
   },
   plugins: [
-    new html({template: './index.html'})
+    new htmlWebpackPlugin({ template: './index.html' })
   ]
 };
