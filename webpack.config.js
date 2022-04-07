@@ -14,6 +14,7 @@ module.exports = {
       "&": path.resolve(process.cwd(), "./src"),
     },
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
