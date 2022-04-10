@@ -1,21 +1,28 @@
-import React from "react";
+import React, { memo } from "react";
 
 interface IItem {
   onChange?: (value: string) => void;
+  onBlur?: () => void;
   value?: number | string;
   name: string;
-  label: string
+  label: string;
+  error: string;
 }
 
-const FromItem: React.FC<IItem> = ({children, onChange, value, name, label}) => {
+const FromItem: React.FC<IItem> = ({children, onChange, onBlur, value, name, label, error}) => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-baseline">
       <div className="mx-4 my-2">
         {label}:
       </div>
-      {React.cloneElement(children, {onChange, value})}
+      <div>
+      {React.cloneElement(children, {onChange,onBlur, value})}
+      <div className="text-xs text-red-600">
+        {error}
+      </div>
+      </div>
     </div>
   )
 }
 FromItem.displayName = 'formItem'
-export default FromItem
+export default memo(FromItem)

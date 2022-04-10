@@ -1,6 +1,8 @@
 const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require("webpack")
 module.exports = {
   entry: './src/index.tsx',
   mode: 'development',
@@ -45,6 +47,18 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new htmlWebpackPlugin({ template: './index.html' }),
+    new miniCssExtractPlugin({
+      filename:'[name].[hash].css'
+  }),
+  new CleanWebpackPlugin(),
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      productionSourceMap: false
+    }
+  })
+  ],
   devServer: {
     port: 3000,
     // hot:true
@@ -64,10 +78,4 @@ module.exports = {
        }, */
     }
   },
-  plugins: [
-    new htmlWebpackPlugin({ template: './index.html' }),
-    new miniCssExtractPlugin({
-      filename:'[name].[hash].css'
-  }) 
-  ]
 };

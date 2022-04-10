@@ -1,17 +1,17 @@
 import React from "react";
 
-interface IInput {
+interface ItextArea {
   onChange?: (value: string) => void;
   onBlur?: () => void;
   value?: string;
 }
-const Input: React.FC<IInput> = ({ onChange, onBlur, value }) => {
+const TextArea: React.FC<ItextArea> = ({ onChange, onBlur, value }) => {
   return (
     <div>
-      <input
+      <textarea
         className="rounded-sm border"
         value={value}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           onChange?.(e.target.value)
         }
         onBlur={onBlur}
@@ -19,5 +19,5 @@ const Input: React.FC<IInput> = ({ onChange, onBlur, value }) => {
     </div>
   );
 };
-Input.displayName = "input";
-export default Input;
+TextArea.displayName = "TextEara";
+export default TextArea;
