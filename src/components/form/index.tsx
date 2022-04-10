@@ -58,7 +58,7 @@ const From: React.FC<Ifrom> = ({
     <div>
       {renderChildren()}
       <button
-        onClick={() => onEnter(formDate)}
+        onClick={() => onEnter?.(formDate)}
         className="border rounded bg-green-200 text-white p-1 ml-2 text-sm"
       >
         确认
