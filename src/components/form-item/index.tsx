@@ -26,7 +26,4 @@ const FromItem: React.FC<IItem> = ({children, onChange, onBlur, value, name, lab
 }
 FromItem.displayName = 'formItem'
 //性能优化
-export default memo(FromItem, (prev, next) => {
-  if(next.value === prev.value && next.error === prev.error) return false
-  return true
-})
+export default memo(FromItem, (prev, next) => next.value === prev.value && next.error === prev.error)
