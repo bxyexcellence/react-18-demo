@@ -42,7 +42,7 @@ const From: React.FC<Ifrom> = ({
           child,
           {
             key: name,
-            onChange: (value: string) => setFiledValue(name, value),
+            onChange: (value: any) => setFiledValue(name, value),
             onBlur: () => handleValitale({[name]: formDate[name]}),
             value: formDate[name],
             error: errors[name]
