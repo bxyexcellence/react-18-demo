@@ -7,6 +7,7 @@ import Form from "./components/form";
 import FormItem from "./components/form-item";
 import Input from "./components/form-input";
 import TextArea from "./components/form-text-eara";
+import MultipleChoice from './components/form-multiple-choice/index';
 
 const App: React.FC = ({}) => {
   /* const [formDate, setFormDate] = useState({
@@ -17,13 +18,28 @@ const App: React.FC = ({}) => {
   const initData = {
     name: "name",
     email: "email",
-    text: "text"
+    text: "text",
+    multipleChoice: "1"
   }
   const validator = {
     name: [{ required: true, message: "用户名是必填项，请填写~" }],
     email: [{ required: true, message: "邮箱是必填项，请填写~" }],
     text: [{ required: true, message: "文本是必填项，请填写~" },]
   };
+  const multipleChoiceDataSource = [
+    {
+      title: '单选1',
+      value: '1'
+    },
+    {
+      title: '单选2',
+      value: '2'
+    },
+    {
+      title: '单选3',
+      value: '3'
+    }
+  ]
  /*  const handleChange = (key: string, value: string | number) => {
     setFormDate({
       ...formDate,
@@ -61,6 +77,9 @@ const App: React.FC = ({}) => {
         </FormItem>
         <FormItem name="text" label="文本">
           <TextArea />
+        </FormItem>
+        <FormItem name="multipleChoice" label="单选">
+          <MultipleChoice dataSource={multipleChoiceDataSource} />
         </FormItem>
       </Form>
     </div>
