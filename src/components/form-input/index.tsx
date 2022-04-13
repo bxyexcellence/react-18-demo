@@ -2,7 +2,7 @@ import React from "react";
 
 interface IInput {
   onChange?: (value: string) => void;
-  onBlur?: () => void;
+  onBlur?: (value: any) => void;
   value?: string;
 }
 const Input: React.FC<IInput> = ({ onChange, onBlur, value }) => {
@@ -14,7 +14,7 @@ const Input: React.FC<IInput> = ({ onChange, onBlur, value }) => {
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           onChange?.(e.target.value)
         }
-        onBlur={onBlur}
+        onBlur={(e) => onBlur?.(e.target.value)}
       />
     </div>
   );

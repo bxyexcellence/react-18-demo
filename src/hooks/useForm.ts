@@ -10,7 +10,7 @@ const useForm = (initformDate: object, valitales: object) => {
   const initForm = () => {
     validatorsRef.current = new Schema(valitales as any)
     formRef.current = JSON.parse(JSON.stringify(initformDate))
-    setFormDate(initformDate)
+    setFormDate(JSON.parse(JSON.stringify(initformDate)))
     setErrors(Object.keys(valitales).reduce((prev, curr)=>  ({
       ...prev,
       [curr]: ''
@@ -28,7 +28,6 @@ const useForm = (initformDate: object, valitales: object) => {
         prev[curr] = message || ''
         return prev
       }, {})
-      //debugger
       setErrors({
         ...errors,
         ...newErrors
@@ -38,6 +37,7 @@ const useForm = (initformDate: object, valitales: object) => {
 
 
   const setFiledValue = (key: string, value:any) => {
+    //debugger
     setFormDate({
       ...formDate,
       [key]: value

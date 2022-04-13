@@ -2,7 +2,7 @@ import React from "react";
 
 interface ItextArea {
   onChange?: (value: string) => void;
-  onBlur?: () => void;
+  onBlur?: (value: any) => void;
   value?: string;
 }
 const TextArea: React.FC<ItextArea> = ({ onChange, onBlur, value }) => {
@@ -14,7 +14,7 @@ const TextArea: React.FC<ItextArea> = ({ onChange, onBlur, value }) => {
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           onChange?.(e.target.value)
         }
-        onBlur={onBlur}
+        onBlur={(e) => onBlur?.(e.target.value)}
       />
     </div>
   );

@@ -24,6 +24,7 @@ const From: React.FC<Ifrom> = ({
   const {
     formDate, errors, setFiledValue, handleValitale, reSetForm
   } = useForm(value, validator)
+  
  /*  const descriptor = {...validator}
   const validators = new Schema(descriptor);
   const handleChange = (name: string, itemvalue: string) => {
@@ -36,23 +37,23 @@ const From: React.FC<Ifrom> = ({
   const renderChildren = () => {
     const childrenArr: React.FC<IChild>[] = [];
     React.Children.forEach(children, (child) => {
-    //  if (child.type.displayName === "formItem") {
-        const { name } = child.props;
-        const item = React.cloneElement(
-          child,
-          {
-            key: name,
-            onChange: (value: any) => setFiledValue(name, value),
-            onBlur: () => handleValitale({[name]: formDate[name]}),
-            value: formDate[name],
-            error: errors[name]
-          },
-          child.props.children
-        );
-        childrenArr.push(item);
-  //   }
-    });
-    return childrenArr;
+      //  if (child.type.displayName === "formItem") {
+          const { name } = child.props;
+          const item = React.cloneElement(
+            child,
+            {
+              key: name,
+              onChange: (value: any) => setFiledValue(name, value),
+              onBlur: (value: any) => handleValitale({[name]: value}),
+              value: formDate[name],
+              error: errors[name]
+            },
+            child.props.children
+          );
+          childrenArr.push(item);
+    //   }
+      });
+      return childrenArr;
   };
   return (
     <div>
@@ -68,6 +69,12 @@ const From: React.FC<Ifrom> = ({
         className="border rounded bg-red-400 text-white p-1 ml-4 text-sm"
       >
         重置
+      </button>
+      <button
+        onClick={() => handleValitale(formDate)}
+        className="border rounded bg-blue-200 text-white p-1 ml-2 text-sm"
+      >
+        校验全部
       </button>
     </div>
   );
